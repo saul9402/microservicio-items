@@ -18,6 +18,10 @@ public class ItemServiceFeign implements ItemService {
 
 	@Override
 	public List<Item> findAll() {
+		/**
+		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
+		 * marcara error
+		 */
 		return clienteFeign.listar().stream().map(producto -> {
 			return new Item(producto, 1);
 		}).collect(Collectors.toList());
@@ -25,6 +29,10 @@ public class ItemServiceFeign implements ItemService {
 
 	@Override
 	public Item findById(Long id, Integer cantidad) {
+		/**
+		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
+		 * marcara error
+		 */
 		return new Item(clienteFeign.detalle(id), cantidad);
 	}
 

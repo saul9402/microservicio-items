@@ -30,6 +30,10 @@ public class ItemServiceImpl implements ItemService {
 				 * listOfServers de este microservicio
 				 */
 				.asList(clienteRest.getForObject("http://servicio-productos/listar", Producto[].class));
+		/**
+		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
+		 * marcara error
+		 */
 		return productos.stream().map(producto -> {
 			return new Item(producto, 1);
 		}).collect(Collectors.toList());
@@ -39,6 +43,10 @@ public class ItemServiceImpl implements ItemService {
 	public Item findById(Long id, Integer cantidad) {
 		Map<String, String> pathVariables = new HashMap<String, String>();
 		pathVariables.put("id", id.toString());
+		/**
+		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
+		 * marcara error
+		 */
 		Producto producto = clienteRest.getForObject("http://servicio-productos/ver/{id}", Producto.class,
 				pathVariables);
 		return new Item(producto, cantidad);
