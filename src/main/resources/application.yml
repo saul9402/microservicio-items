@@ -3,3 +3,9 @@ spring:
     name: servicio-items
 server:
   port: 8002
+
+#Con esto indicas que el microservicio llamado "servicio-productos" será balanceado o administrado
+# por ribbon y tendrá dos instancias desplegadas en el servidor y puerto definidos en la lista.
+servicio-productos:
+  ribbon:
+    listOfServers: localhost:8001, localhost:9001  

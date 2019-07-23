@@ -11,7 +11,7 @@ import com.formacionbdi.springboot.app.item.models.Producto;
 //Se indica que esto es un cleinte feign
 //en el "name" indicas a que servicio te vas a conectar, 
 //este nombre se define en el application.yml del servicio a conectarse
-@FeignClient(name = "servicio-productos", url = "localhost:8001")
+@FeignClient(name = "servicio-productos")
 public interface ProductoClienteRest {
 
 	// aqui es donde se define el metodo y la ruta del servicio que va a consumir
