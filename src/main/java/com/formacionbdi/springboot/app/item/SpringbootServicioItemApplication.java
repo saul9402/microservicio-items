@@ -2,6 +2,7 @@ package com.formacionbdi.springboot.app.item;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -29,6 +30,13 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * dependencia se configura pero recomienda hacerlo
  */
 @EnableEurekaClient
+
+/*
+ * Con esta anotación se habilita el uso de Hystrix para el manejo y monitoreo
+ * de errores entre los microservicios
+ * 
+ */
+@EnableCircuitBreaker
 
 @SpringBootApplication
 public class SpringbootServicioItemApplication {
