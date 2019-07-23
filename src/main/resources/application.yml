@@ -8,4 +8,4 @@ server:
 # por ribbon y tendrá dos instancias desplegadas en el servidor y puerto definidos en la lista.
 servicio-productos:
   ribbon:
-    listOfServers: localhost:8001, localhost:9001  
+    listOfServers: localhost:8001, localhost:9001
