@@ -6,6 +6,27 @@ server:
 
 #Con esto indicas que el microservicio llamado "servicio-productos" será balanceado o administrado
 # por ribbon y tendrá dos instancias desplegadas en el servidor y puerto definidos en la lista.
-servicio-productos:
-  ribbon:
-    listOfServers: localhost:8001, localhost:9001
+#servicio-productos:
+#  ribbon:
+#    listOfServers: localhost:8001, localhost:9001
+#La configuración de arriba se comenta puesto que ahora será administrada por eureka
+
+
+
+#Esta configuración es opcional cuando el servidor
+#eureka y los clientes están el la misma máquina,
+#pero se vuelve obligatoria cuando están en diferentes lugares.
+
+#Se conoce como heartbeat a la señal que cada microservicio envía
+#cuando se despliega y es enviado al servidor eureka para hacer 
+#el registro, por eso es importante conocer la ubicación física 
+#del servidor eureka. Cuando un servicio ya está registrado en 
+#eureka debe enviar cada 30 segundos ese heartbeat para que asi
+#eureka sepa que sigue activo, cuando el heartbeat se deja 
+#de enviar por 90 segundos o más se elimina del registro de eureka
+#y para volverse a registrar deberá enviar 3 heartbeat consecutivos
+# (1 heartbeat cada 30 segundos).
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
