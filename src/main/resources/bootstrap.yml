@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: servicio-items
+  cloud:
+    config:
+    #Con esto se configura la uri del servidor de configuraciones
+      uri:
+      - http://localhost:8888
