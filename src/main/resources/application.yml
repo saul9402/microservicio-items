@@ -1,6 +1,8 @@
 spring:
   application:
     name: servicio-items
+#Puesto que la configuración se queda centralizada en el acrhivo de configuracion que está en git
+#se toma como prioritaria esa, entonces el puerto no se define aqui, sino en ese archivo
 server:
   port: 8002
 
@@ -30,6 +32,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+#Configura puerto dinámico
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
       
 #Con esto se configura un timeout para hystrix, el cual debe ser mayor que el de ribbon
 #ya que, según la documentación de spring cloud, hystrix "envuelve" a ribbon por lo tanto

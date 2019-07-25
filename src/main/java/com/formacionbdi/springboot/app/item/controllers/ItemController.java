@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
@@ -45,6 +46,7 @@ public class ItemController {
 	 * Solo como ejemplo para ver que también se puede usar balanceo de carga con
 	 * RestTemplate; @Qualifier("serviceRestTemplate")
 	 */
+	@Qualifier("serviceRestTemplate")
 	private ItemService itemService;
 
 	@Value("${configuracion.texto}")
@@ -85,7 +87,7 @@ public class ItemController {
 
 		Map<String, String> json = new HashMap<String, String>();
 		json.put("texto", texto);
-		json.put("puerto", puerto);
+		json.put("puerto", env.getProperty("server.port"));
 
 		if (env.getActiveProfiles().length > 0 && env.getActiveProfiles()[0].equals("dev")) {
 			json.put("autor.nombre", env.getProperty("configuracion.autor.nombre"));
