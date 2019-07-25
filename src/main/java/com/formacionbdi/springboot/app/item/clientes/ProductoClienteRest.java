@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.formacionbdi.springboot.app.item.models.Producto;
+import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 
 /**
  * Se indica que esto es un cleinte feign, en el "name" indicas a que servicio

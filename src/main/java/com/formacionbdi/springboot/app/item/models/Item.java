@@ -3,6 +3,7 @@ package com.formacionbdi.springboot.app.item.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 
 @Data
 @NoArgsConstructor
