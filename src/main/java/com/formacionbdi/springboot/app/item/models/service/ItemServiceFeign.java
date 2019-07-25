@@ -14,11 +14,13 @@ import com.formacionbdi.springboot.app.item.models.Producto;
 @Service
 @Primary
 public class ItemServiceFeign implements ItemService {
+
 	@Autowired
 	private ProductoClienteRest clienteFeign;
 
 	@Override
 	public List<Item> findAll() {
+
 		/**
 		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
 		 * marcara error
@@ -30,6 +32,7 @@ public class ItemServiceFeign implements ItemService {
 
 	@Override
 	public Item findById(Long id, Integer cantidad) {
+
 		/**
 		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
 		 * marcara error
@@ -39,20 +42,17 @@ public class ItemServiceFeign implements ItemService {
 
 	@Override
 	public Producto save(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteFeign.crear(producto);
 	}
 
 	@Override
 	public Producto update(Producto producto, Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteFeign.update(producto, id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		clienteFeign.eliminar(id);
 	}
 
 }
