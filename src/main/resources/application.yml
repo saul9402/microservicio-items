@@ -1,6 +1,13 @@
 spring:
   application:
     name: servicio-items
+    #se configura la trazabilidad; por defecto sleuth sólo va a exportar a zipkin el 10% de los logs con esto hace que sea el 100%
+  sleuth:
+    sampler:
+      probability: 1.0
+    #esta parte es opcional ya que por defecto busca en el localhost y puerto 9411
+  zipkin:
+    base-url: http://localhost:9411/
 #Puesto que la configuración se queda centralizada en el acrhivo de configuracion que está en git
 #se toma como prioritaria esa, entonces el puerto no se define aqui, sino en ese archivo
 server:
