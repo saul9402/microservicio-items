@@ -45,20 +45,20 @@ public class ItemController {
 	 * Solo como ejemplo para ver que también se puede usar balanceo de carga con
 	 * RestTemplate; @Qualifier("serviceRestTemplate")
 	 */
-	private ItemService itemService;
+	private ItemService itemServiceFeign;
 
 	@Value("${configuracion.texto}")
 	private String texto;
 
 	@GetMapping(value = "/listar")
 	public List<Item> listar() {
-		return itemService.findAll();
+		return itemServiceFeign.findAll();
 	}
 
 	@HystrixCommand(fallbackMethod = "metodoAlternativo")
 	@GetMapping(value = "/ver/{id}/cantidad/{cantidad}")
 	public Item detalle(@PathVariable Long id, @PathVariable Integer cantidad) {
-		return itemService.findById(id, cantidad);
+		return itemServiceFeign.findById(id, cantidad);
 	}
 
 	/**
@@ -97,19 +97,19 @@ public class ItemController {
 	@PostMapping(value = "/crear")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Producto crear(@RequestBody Producto producto) {
-		return itemService.save(producto);
+		return itemServiceFeign.save(producto);
 	}
 
 	@PutMapping(value = "/editar/{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Producto editar(@RequestBody Producto producto, @PathVariable Long id) {
-		return itemService.update(producto, id);
+		return itemServiceFeign.update(producto, id);
 	}
 
 	@DeleteMapping(value = "/eliminar/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		itemService.delete(id);
+		itemServiceFeign.delete(id);
 	}
 
 }

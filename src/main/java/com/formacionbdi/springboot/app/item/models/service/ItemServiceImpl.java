@@ -37,6 +37,7 @@ public class ItemServiceImpl implements ItemService {
 		 * Por defecto el timeout está configurado a 1 segundo. Si tarda más de eso
 		 * marcara error
 		 */
+
 		return productos.stream().map(producto -> {
 			return new Item(producto, 1);
 		}).collect(Collectors.toList());
@@ -52,7 +53,7 @@ public class ItemServiceImpl implements ItemService {
 		 */
 		Producto producto = clienteRest.getForObject("http://servicio-productos/ver/{id}", Producto.class,
 				pathVariables);
-		return new Item(producto, cantidad);
+		return new Item(producto, cantidad); 
 	}
 
 	@Override

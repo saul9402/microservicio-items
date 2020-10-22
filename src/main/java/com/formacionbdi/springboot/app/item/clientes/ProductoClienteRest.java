@@ -13,17 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 
 /**
- * Se indica que esto es un cleinte feign, en el "name" indicas a que servicio
+ * Se indica que esto es un cliente feign, en el "name" indicas a que servicio
  * te vas a conectar, este nombre se define en el application.yml del servicio a
  * conectarse
  */
 @FeignClient(name = "servicio-productos")
+//@FeignClient(name = "servicio-productos", url="localhost:8001")
 public interface ProductoClienteRest {
 
 	/**
 	 * aqui es donde se define el verbo http y la ruta del servicio que va a
 	 * consumir este método así como lo que va a devolver despues de haber consumido
-	 * dicho servicio
+	 * dicho servicio.
 	 * 
 	 */
 	@GetMapping(value = "/listar")
