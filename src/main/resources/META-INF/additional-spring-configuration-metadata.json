@@ -28,5 +28,15 @@
     "name": "ribbon.-connect-timeout",
     "type": "java.lang.String",
     "description": "A description for 'ribbon.-connect-timeout'"
+  },
+  {
+    "name": "ribbon.ConnectTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ConnectTimeout'"
+  },
+  {
+    "name": "ribbon.ReadTimeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.ReadTimeout'"
   }
 ]}

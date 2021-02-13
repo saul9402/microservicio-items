@@ -1,12 +1,18 @@
 spring:
   application:
     name: servicio-items
+  #Con esto configuras el microservicio (servicio-items) como cliente del servidor de configuraciones (config-server)
+  #esto para poder hacer uso de las configuraciones que hay ahí definidas.
+  #Por defecto bootstrap.yml carga primero, incluso antes que el propio application.yml del proyecto,
+  #luego se carga application.yml del proyecto y finalmente application.yml del servidor de configuraciones
+  #RECORDAR que la configuracion de bootstrap no se sobreescribe (es el jefe) pero la del application.yml del proyecto
+  #sí se puede sobreescribir con la del aplication.yml del config-server.
   cloud:
     config:
     #Con esto se configura la uri del servidor de configuraciones
       uri:
       - http://localhost:8888
-#Si requieres setear el perfil que está activo se hacedesde aqui
+#Si requieres setear el perfil que está activo se hace desde aqui
   profiles:
     active:
     - dev
