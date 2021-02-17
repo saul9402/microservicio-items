@@ -100,10 +100,10 @@ public class ItemController {
 		return itemServiceFeign.save(producto);
 	}
 
-	@PutMapping(value = "/editar/{id}")
+	@PutMapping(value = "/editar/{id}")  
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Producto editar(@RequestBody Producto producto, @PathVariable Long id) {
-		return itemServiceFeign.update(producto, id);
+		return itemServiceFeign.update(producto, id); 
 	}
 
 	@DeleteMapping(value = "/eliminar/{id}")

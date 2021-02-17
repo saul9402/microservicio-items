@@ -19,6 +19,9 @@ import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 @Service("serviceRestTemplate")
 public class ItemServiceImpl implements ItemService {
 
+	/**
+	 * Se configura en AppConfig
+	 */
 	@Autowired
 	RestTemplate clienteRest;
 
@@ -28,9 +31,10 @@ public class ItemServiceImpl implements ItemService {
 				/**
 				 * Al usar el balanceo de carga en el rest template (usando la
 				 * anotacion @LoadBalanced en la clase AppConfig) en vez de usar el
-				 * http://localhost:8001 (todo hardocodeado) se usa el nombre del servicio como
-				 * ruta, :3. Ahora esa configuración queda en el application.yml en la parte de
-				 * listOfServers de este microservicio
+				 * clienteRest.getForObject("http://localhost:8001/listar", Producto[].class));
+				 * (todo hardocodeado) se usa el nombre del servicio como ruta, :3. Ahora esa
+				 * configuración queda en el application.yml en la parte de listOfServers de
+				 * este microservicio
 				 */
 				.asList(clienteRest.getForObject("http://servicio-productos/listar", Producto[].class));
 		/**
@@ -53,7 +57,7 @@ public class ItemServiceImpl implements ItemService {
 		 */
 		Producto producto = clienteRest.getForObject("http://servicio-productos/ver/{id}", Producto.class,
 				pathVariables);
-		return new Item(producto, cantidad); 
+		return new Item(producto, cantidad);
 	}
 
 	@Override
@@ -61,8 +65,7 @@ public class ItemServiceImpl implements ItemService {
 		HttpEntity<Producto> body = new HttpEntity<Producto>(producto);
 		ResponseEntity<Producto> response = clienteRest.exchange("http://servicio-productos/crear", HttpMethod.POST,
 				body, Producto.class);
-		Producto productoResponse = response.getBody();
-		return productoResponse;
+		return response.getBody();
 	}
 
 	@Override

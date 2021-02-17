@@ -9,9 +9,9 @@ import org.springframework.web.client.RestTemplate;
 public class AppConfig {
 
 	@Bean("clienteRest")
-	/*
+	/**
 	 * Con esta anotacion de forma automatica utiliza ribbon para el balanceo de
-	 * carga en el rest template. Es para restTemplate en el feing funciona sin esto
+	 * carga en el rest template. Es para restTemplate en el feing funciona sin esto.
 	 * 
 	 * @return
 	 */
