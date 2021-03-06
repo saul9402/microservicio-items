@@ -3,6 +3,14 @@ spring:
     name: servicio-items
 #Puesto que la configuración se queda centralizada en el acrhivo de configuracion que está en git
 #se toma como prioritaria esa, entonces el puerto no se define aqui, sino en ese archivo
+#Se modifica la probabilidad en que Sleuth va a enviar las trazas a Zipkin, por defecto sólo se envian el 10% de las veces (request)
+#0.1 es el 10% y 1 es el 100% de las veces
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411
+#En realidad no es necesario configurar la URL en este caso, ya que por defecto va a buscar en localhost en el puerto 9411
 server:
   port: 8002
 
@@ -44,3 +52,9 @@ hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 20000
 ribbon:
   ConnectTimeout: 3000
   ReadTimeout: 10000
+
+
+
+
+
+
