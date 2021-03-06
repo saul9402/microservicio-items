@@ -16,6 +16,14 @@ import org.springframework.web.client.RestTemplate;
 import com.formacionbdi.springboot.app.item.models.Item;
 import com.formacionbdi.springboot.app.commons.models.entity.Producto;
 
+/**
+ * Transacciones distribuidas entre microservicios:
+ * https://github.com/piomin/sample-spring-microservices-transactions
+ * https://piotrminkowski.com/2020/06/19/distributed-transactions-in-microservices-with-spring-boot/
+ * 
+ * @author saul_
+ *
+ */
 @Service("serviceRestTemplate")
 public class ItemServiceImpl implements ItemService {
 
