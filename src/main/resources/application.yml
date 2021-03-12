@@ -9,7 +9,9 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://localhost:9411
+    base-url: http://zipkin-server:9411
+  rabbitmq:
+    host: rabbitmq-38
 #En realidad no es necesario configurar la URL en este caso, ya que por defecto va a buscar en localhost en el puerto 9411
 server:
   port: 8002
